@@ -1,0 +1,47 @@
+# SolonPad — contracts
+
+Every contract SolonPad runs in production, in the open: the Pons V2 curve engine
+port (`src/v2/`), the aggregator's `SolonFeeRouter` (`src/aggregator/`), and the
+deployment/config scripts. Radian-lineage sources (`src/radian/`, root factory)
+are kept for provenance; SolonPad does not deploy them.
+
+## Verify against production
+
+| Contract | Chain | Address |
+|---|---|---|
+| SolonFeeRouter | Arc (5042) | `0x96Ed755a4E176999A892F0E35b5FFf56D25F5D19` |
+| SolonFeeRouter | Robinhood (4663) | `0xBef20379BdE976e807d8E6E9E831961512A02278` |
+| PonsV2LaunchFactory (Solon Launch) | Arc | `0xd6b86b9B1bB64b941b21AaA6a0e3A673e8405A3b` |
+| UERC20Factory (instant v4) | Arc | `0xF94bFe8D7583C2272527C9A45efa5c07b4a26c22` |
+| InstantLaunchStrategy (1% LP) | Arc | `0xfA5997445db1E9FB7F7664FD176379B6B26497f0` |
+| FeeSplitter (50/50) | Arc | `0xD6B05564ceA990b69ABF10B433279093758e2A54` |
+| BeneficiaryVault | Arc | `0xC31c8853f6C0CA12421eb36906dB8BFaf89A85bA` |
+| UERC20Factory | Robinhood | `0x83922922776C121671072C9349D8Cc1867D4856f` |
+| InstantLaunchStrategy | Robinhood | `0x3e93DF005AB38B4D0B1aD197Ee161E57A204a5e9` |
+| FeeSplitter | Robinhood | `0x6A64C681606845E5Ed4E2340C59414b7d1810631` |
+| BeneficiaryVault | Robinhood | `0x8aF664E15D27F6E126662D12D2Db9AedD8113424` |
+
+The instant-v4 engine is the official Uniswap Liquidity Launcher (canonical
+launcher `0x0000FffFBE8efE702c8703aE3477FF5dE3d319C0` on both chains) with a
+two-line fee constant diff (`LP_FEE = 10000`, `TICK_SPACING = 100`). The curve
+engine is a whitespace-faithful port of the Sourcify `exact_match` sources of
+the live Pons V2 factory on chain 4663.
+
+## Build
+
+```bash
+forge install foundry-rs/forge-std Uniswap/v4-core Uniswap/v4-periphery \
+  OpenZeppelin/openzeppelin-contracts
+forge test
+```
+
+Dependency pins used in production builds: forge-std `bf647bd`,
+v4-core `46c68346`, v4-periphery `dce236d4`.
+
+## Related
+
+- Agent interface: https://github.com/solonlend/solonpad-skill
+- App: https://solonpad.fun
+
+MIT. Not available to persons or entities in the United States, China, or
+sanctioned jurisdictions.

@@ -1,0 +1,25 @@
+[profile.default]
+src = "src"
+out = "out"
+libs = ["lib"]
+# Source-identical to the production Pons V2 deployment (Sourcify exact_match on
+# Robinhood Chain, built with 0.8.35); we compile everything with 0.8.26, via-IR,
+# evm cancun (v4-core needs TSTORE; probed live on Arc), optimizer runs 200.
+solc_version = "0.8.26"
+via_ir = true
+evm_version = "cancun"
+optimizer = true
+optimizer_runs = 200
+# No CBOR metadata / bytecode hash: the EVM code is then byte-identical from any
+# checkout (paths and file ordering can no longer change the trailer), which is
+# what makes the hook's CREATE2 salt mining and Arcscan verification reproducible.
+bytecode_hash = "none"
+cbor_metadata = false
+fs_permissions = [{ access = "read", path = "./test" }]
+
+[rpc_endpoints]
+arc_testnet = "https://rpc.testnet.arc.io"
+# Set ARC_MAINNET_RPC in your environment (Arc mainnet public RPC / a provider key).
+arc_mainnet = "${ARC_MAINNET_RPC}"
+robinhood_testnet = "https://rpc.testnet.chain.robinhood.com"
+robinhood_mainnet = "https://rpc.mainnet.chain.robinhood.com"
