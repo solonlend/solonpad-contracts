@@ -45,3 +45,24 @@ v4-core `46c68346`, v4-periphery `dce236d4`.
 
 MIT. Not available to persons or entities in the United States, China, or
 sanctioned jurisdictions.
+
+## Quote-denominated instant v4 launches (`src/quote-v4/`)
+
+Variants of the official Uniswap Liquidity Launcher `InstantLaunchStrategy` /
+`FeeSplitter` that accept an **ERC20 quote currency** (tokenized stocks, memes)
+instead of hardcoded native: `currency0` becomes a constructor parameter with an
+18-decimals check, and the splitter's native-side flows are generalized to the
+quote ERC20. Generated as a reviewable scripted diff from the MIT upstream
+(`Uniswap/liquidity-launcher`); everything else is byte-identical to the
+audited original.
+
+Live instances (Arc 5042) — strategy / splitter per quote asset:
+
+| Quote | Strategy | FeeSplitter |
+|---|---|---|
+| CRCL | `0xDbb391B29CeCC76ddda15626bBcaAF9dA7f79ADc` (tick 167700) | `0xc6A82Ee0d461bB86f22f78e88BeaE1e2c6349867` |
+| TSLA | `0x1c6BbE8Ab2A836D30ec2f9d0F1cA751360899a1e` (tick 181400) | `0x24b9a4C7B0f6b6dE129c2E9F25c6D2Fa495151F2` |
+
+(NVDA / AAPL / SPY / ARGUS / LONG / DUKE instances and the full current address
+book live in the `solonpad-skill` repo's `addresses.json`, which is the
+authoritative, continuously updated table.)
