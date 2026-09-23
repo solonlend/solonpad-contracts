@@ -16,6 +16,7 @@ are kept for provenance; SolonPad does not deploy them.
 | InstantLaunchStrategy (1% LP) | Arc | `0xfA5997445db1E9FB7F7664FD176379B6B26497f0` |
 | FeeSplitter (50/50) | Arc | `0xD6B05564ceA990b69ABF10B433279093758e2A54` |
 | BeneficiaryVault | Arc | `0xC31c8853f6C0CA12421eb36906dB8BFaf89A85bA` |
+| SolonStaking (`src/stake/`) | Arc | `0xB3E0b89b3Ba098D83072dd60c1946CFB3231688f` |
 | UERC20Factory | Robinhood | `0x83922922776C121671072C9349D8Cc1867D4856f` |
 | InstantLaunchStrategy | Robinhood | `0x3e93DF005AB38B4D0B1aD197Ee161E57A204a5e9` |
 | FeeSplitter | Robinhood | `0x6A64C681606845E5Ed4E2340C59414b7d1810631` |
@@ -26,6 +27,17 @@ launcher `0x0000FffFBE8efE702c8703aE3477FF5dE3d319C0` on both chains) with a
 two-line fee constant diff (`LP_FEE = 10000`, `TICK_SPACING = 100`). The curve
 engine is a whitespace-faithful port of the Sourcify `exact_match` sources of
 the live Pons V2 factory on chain 4663.
+
+## SOLON staking (`src/stake/`)
+
+`SolonStaking` lets holders stake SOLON and earn SOLON: each day's platform-fee
+buyback is injected with its buyback tx hash in `RewardAdded` and streamed over
+7 days, alongside a one-off 12.69M SOLON genesis pool streamed over 30 days. No
+lock, no cooldown — `unstake` returns principal plus accrued rewards in one tx,
+and exits can never be paused. Principal and rewards are kept in separate
+buckets; the owner cannot move SOLON. Runtime bytecode matches this source
+built with this repo's `foundry.toml` (immutables masked). Unaudited. Stake at
+https://solonpad.fun/stake; agent call sequences in `solonpad-skill` (§G).
 
 ## Build
 
