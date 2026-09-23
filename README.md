@@ -35,8 +35,12 @@ buyback is injected with its buyback tx hash in `RewardAdded` and streamed over
 7 days, alongside a one-off 12.69M SOLON genesis pool streamed over 30 days. No
 lock, no cooldown — `unstake` returns principal plus accrued rewards in one tx,
 and exits can never be paused. Principal and rewards are kept in separate
-buckets; the owner cannot move SOLON. Runtime bytecode matches this source
-built with this repo's `foundry.toml` (immutables masked). Unaudited. Stake at
+buckets; the owner cannot move SOLON. Sourcify-verified on Arc — creation and
+runtime bytecode both `match`
+([repo.sourcify.dev](https://repo.sourcify.dev/5042/0xB3E0b89b3Ba098D83072dd60c1946CFB3231688f)).
+It is a partial match, not `exact_match`, because this repo's `foundry.toml`
+builds without CBOR metadata, so there is no metadata hash to compare; the
+bytecode itself matches. Unaudited. Stake at
 https://solonpad.fun/stake; agent call sequences in `solonpad-skill` (§G).
 
 ## Build
