@@ -1,0 +1,12 @@
+{
+  "name": "solon-v3-keepers",
+  "private": true,
+  "type": "module",
+  "description": "Off-chain keepers for Solon v3 reward rounds, payout push, v2 fee ingress and pool-A restock/range.",
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "test": "node --test test/*.test.mjs",
+    "test:anvil": "node --test test/anvil/*.test.mjs"
+  },
+  "dependencies": { "ethers": "6.15.0" }
+}

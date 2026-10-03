@@ -23,3 +23,11 @@ arc_testnet = "https://rpc.testnet.arc.io"
 arc_mainnet = "${ARC_MAINNET_RPC}"
 robinhood_testnet = "https://rpc.testnet.chain.robinhood.com"
 robinhood_mainnet = "https://rpc.mainnet.chain.robinhood.com"
+
+# Deep fuzz/invariant campaign for V3: FOUNDRY_PROFILE=deep forge test --match-path 'test/v3/**'
+# Inline `forge-config: default.*` overrides only apply to the default profile, so these values win here.
+[profile.deep.fuzz]
+runs = 10000
+[profile.deep.invariant]
+runs = 1000
+depth = 500

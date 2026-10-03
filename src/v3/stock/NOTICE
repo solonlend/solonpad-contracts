@@ -1,0 +1,72 @@
+Solon stock layer (src/v3/stock) — third-party notices
+=========================================================
+
+This directory forks and adapts ArcStocks v2, released under the MIT License.
+Source of the fork: the Sourcify-verified sources of the ArcStocks v2 deployments:
+
+  Arc 5042        ArcStocksHubV2   0x55ef993bbe9e801bef020e2a6331d42815c7eaeb
+  Arc 5042        HubSettlement    0x9dad08122d83ad529761951b2e03b946104ea33b
+  Arc 5042        ArcStockV2       0x0A2dd7160De0c452ED4642d498162550Fe2165f2
+  Arc 5042        CanonicalGate    0xd82ead0b08c7d1fc3a8fc61e6cbc94fc5da54856
+  Robinhood 4663  ReserveVaultV2   0xe77b3b55e75d8f5b484ce677fa9231f9181b1bcd
+  Robinhood 4663  UniswapV3Venue   0x9f9abde1f18f75fbf30865f7d6625541be411f95
+  Ethereum        Bridger          0x02bc6bba86856291296134e454b17752e573ed05
+
+Copyright (c) the ArcStocks authors. Each forked file keeps its
+"SPDX-License-Identifier: MIT" header and names the original it derives from.
+Solon's changes are listed in the file headers and in docs/PLAN-v3-contracts.md
+(phase 5). This is a Solon deployment with Solon's own tokens (e.g. NVDA.sol);
+it is not affiliated with or endorsed by ArcStocks, and a code fork grants no
+Robinhood brand, securities or distribution permission.
+
+Forked (MIT):
+  SolonStockHub.sol        <- src/v2/arc/ArcStocksHubV2.sol
+  HubSettlement.sol        <- src/v2/arc/HubSettlement.sol
+  SolonStockToken.sol      <- src/v2/arc/ArcStockV2.sol
+  CanonicalGate.sol        <- src/v2/arc/CanonicalGate.sol
+  robinhood/ReserveVault.sol     <- src/v2/robinhood/ReserveVaultV2.sol
+  robinhood/RestrictedVenue.sol  <- src/robinhood/UniswapV3Venue.sol
+  ethereum/EthereumBridger.sol   <- src/v2/ethereum/Bridger.sol
+  libs/Messages.sol, libs/CctpV2.sol, libs/Arbitrum.sol, libs/Guarded.sol
+  interfaces/IArcStocksV2.sol, interfaces/IExecutionVenue.sol,
+  interfaces/IStableRail.sol
+
+GPL notice:
+  interfaces/IV3SwapRouter.sol is marked "SPDX-License-Identifier:
+  GPL-2.0-or-later" in the original (a Uniswap SwapRouter02 interface subset)
+  and keeps that licence here. The stock layer as a whole is therefore NOT a
+  pure-MIT distribution; a release must review the combined licence and any
+  source-offer obligations before distribution (design r5 §8.1).
+
+Vendored (MIT, LayerZero Labs):
+  lz/*.sol — @layerzerolabs/oapp-evm and @layerzerolabs/lz-evm-protocol-v2
+  sources exactly as embedded in the verified ArcStocksHubV2 Sourcify record;
+  only import paths were flattened and forge fmt applied.
+
+New Solon code (MIT): CapacityController.sol, OrderScheduler.sol,
+interfaces/IFundingRoute.sol, interfaces/IOFTLike.sol, RelayFundingRoute.sol,
+SolonStockSellRoute.sol, StockPoolVault.sol, FloatRebalancer.sol,
+ethereum/EthereumFloatAdapter.sol, robinhood/FloatReceiver.sol, and
+../V3MultiHopRouter.sol. interfaces/IOFTLike.sol restates the LayerZero OFT v2
+SendParam/OFTReceipt layout; Relay and USDG OFT integrations are unverified
+against live deployments (see docs/PLAN-v3-contracts.md phase 5).
+
+The MIT License (ArcStocks, LayerZero Labs):
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.

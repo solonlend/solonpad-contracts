@@ -1,0 +1,35 @@
+{
+  "name": "oracle-keeper (RH mainnet template; stockPriceSender is null until DeployV3PriceSender runs)",
+  "chains": {
+    "rh": { "chainId": 4663, "rpcEnv": "RH_RPC_URL", "rpcUrl": "https://rpc.mainnet.chain.robinhood.com/rpc" }
+  },
+  "keys": { "oracle-keeper": "ORACLE_KEEPER_KEY_PATH", "allowSolonConfigDir": false },
+  "oracle": {
+    "stockPriceSender": null,
+    "wsEnv": "RH_WS_URL",
+    "simulateFrom": null,
+    "feeBufferBps": 1000,
+    "maxFeeWei": "1000000000000000",
+    "debounceMs": 3000,
+    "pollMs": 15000,
+    "catchUpMs": 300000,
+    "maxLogRange": 50000,
+    "initialLookbackBlocks": 2000,
+    "recoverLookbackBlocks": 120000,
+    "params": {
+      "deviationBps": 100,
+      "heartbeatSec": 0,
+      "heartbeatMarginSec": 600,
+      "maxTwapBps": 150,
+      "twapTrigger": true,
+      "freshnessSec": 0,
+      "maxSourceAgeSec": 93600,
+      "minIntervalSec": 30,
+      "demandMinIntervalSec": 60,
+      "demandTtlSec": 1800,
+      "demandCoalesceSec": 240,
+      "batchAll": true,
+      "session": { "openDow": 0, "openMinute": 1080, "closeDow": 5, "closeMinute": 1020, "holidays": ["2026-11-26", "2026-12-25", "2027-01-01"] }
+    }
+  }
+}

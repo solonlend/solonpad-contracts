@@ -1,0 +1,56 @@
+{
+  "name": "arc-mainnet (template: v3 addresses are null until deployed)",
+  "chains": {
+    "arc": { "chainId": 5042, "rpcEnv": "ARC_RPC_URL" },
+    "rh": { "chainId": 4663, "rpcEnv": "RH_RPC_URL" }
+  },
+  "keys": {
+    "round-keeper": "KEEPER_KEY_PATH",
+    "push-keeper": "KEEPER_KEY_PATH",
+    "v2-ingress-keeper": "PLATFORM_KEY_PATH",
+    "restock-keeper": "KEEPER_KEY_PATH",
+    "allowSolonConfigDir": false
+  },
+  "contracts": {
+    "roundManager": null,
+    "batcher": null,
+    "stockRegistry": null,
+    "payoutVault": null,
+    "distributor": null,
+    "rewardPriceOracle": null,
+    "v2Ingress": null,
+    "v2Router": null,
+    "buybackExecutor": null,
+    "protocolDeskVault": null
+  },
+  "round": {
+    "sources": [],
+    "relay": {
+      "user": null,
+      "recipient": null,
+      "allowedTargets": ["0xb92fe925dc43a0ecde6c8b1a2709c170ec4fff4f"]
+    },
+    "params": { "maxActiveRounds": 1, "quoteTtlSec": 600, "slippageBps": "99", "maxFeeBps": "50", "extraFixedCost18": "0", "hubFeeBps": "25", "lzBufferBps": "2000", "costBasis": "external" }
+  },
+  "push": { "directSources": [], "params": { "gasBudget": 300000, "perAccountGas": 250000, "maxTxGas": 12000000, "maxCostBps": "50" } },
+  "ingress": {
+    "sharedDd43Lock": true,
+    "params": { "collectEnabled": false, "thresholdUsd18": "100000000000000000000" },
+    "sources": [
+      {
+        "name": "SOLON_V2",
+        "kind": 1,
+        "key": null,
+        "policyVersion": 1,
+        "tokens": ["0x0000000000000000000000000000000000000000", "0xd36687146385F7Dc84A18FEA3D00319d39D6d1a0"],
+        "collect": { "splitter": "0xD6B05564ceA990b69ABF10B433279093758e2A54", "positionId": 45012 }
+      }
+    ]
+  },
+  "restock": {
+    "manifest": null,
+    "wsEnv": "ARC_WS_URL",
+    "demandDir": null,
+    "params": { "deviationBps": 130, "rangeHalfWidthBps": 200, "maxTradeUsd": 1000, "poolStockUsd": 1000, "reserveUsd": 1000, "reserveAlertBps": 5000, "idleStockKeepUsd": 250, "feeReserve18": "2000000000000000000" }
+  }
+}

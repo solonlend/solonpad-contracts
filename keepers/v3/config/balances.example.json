@@ -1,0 +1,16 @@
+{
+  "name": "balance-watch MAINNET (fork F8). Fill the addresses from script/v3/mainnet/state/*.json and the keeper key files' addresses.",
+  "chains": {
+    "arc": { "chainId": 5042, "rpcEnv": "ARC_RPC_URL" },
+    "rh": { "chainId": 4663, "rpcEnv": "RH_RPC_URL" }
+  },
+  "balances": {
+    "repeatMs": 21600000,
+    "targets": [
+      { "label": "RH ReserveVault (pays LZ fee of every result message)", "chain": "rh", "address": "0x0000000000000000000000000000000000000000", "min": "0.02", "unit": "ETH" },
+      { "label": "RH oracle keeper (gas + LZ fee per push)", "chain": "rh", "address": "0x0000000000000000000000000000000000000000", "min": "0.01", "unit": "ETH" },
+      { "label": "Arc round/push keeper (gas + Ops fees per round)", "chain": "arc", "address": "0x0000000000000000000000000000000000000000", "min": "20", "unit": "USDC" },
+      { "label": "Arc restock keeper (gas)", "chain": "arc", "address": "0x0000000000000000000000000000000000000000", "min": "5", "unit": "USDC" }
+    ]
+  }
+}

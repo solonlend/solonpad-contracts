@@ -1,0 +1,14 @@
+out/
+cache/
+broadcast/
+node_modules/
+script/v3/out/
+.env
+*.log
+.testnet/
+script/v3/mainnet/state*/
+script/v3/mainnet/launchd/
+script/v3/mainnet/*.env
+keepers/v3/config/*.json
+!keepers/v3/config/*.example.json
+*.key
